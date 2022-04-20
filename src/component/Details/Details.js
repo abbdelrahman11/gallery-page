@@ -32,7 +32,6 @@ export default function UsersData() {
       });
   };
 
-  const x = Object.keys(Users)[7];
   useEffect(() => {
     getImages();
   }, []);
@@ -79,12 +78,8 @@ export default function UsersData() {
       ))}
     </div>
   );
-  console.log(item.name);
+ 
 }
 {
-  /* <div
-className=
->
-
-</div> */
+ 
 }
