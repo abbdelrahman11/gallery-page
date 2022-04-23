@@ -7,10 +7,10 @@ import {
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Details.css";
-export default function UsersData() {
-  const [Users, fetchUsers] = useState([]);
+export default function Details() {
+  const [Data, fetchTheData] = useState([]);
   const [current, setCurrent] = useState(0);
-  const length = Users.length;
+  const length = Data.length;
   const { uuid } = useParams();
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -28,7 +28,7 @@ export default function UsersData() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        fetchUsers(res);
+        fetchTheData(res);
       });
   };
 
@@ -41,7 +41,7 @@ export default function UsersData() {
       <Link to="/">
         <h2>Back To Gallery</h2>
       </Link>
-      {Users.filter((card) => card.uuid === uuid).map((item, i) => (
+      {Data.filter((card) => card.uuid === uuid).map((item, i) => (
         <div className="img-section" key={i}>
           <h3 className="img-number">
             image <span>{current + 1}</span> /30
@@ -50,7 +50,7 @@ export default function UsersData() {
             <span>Name of Image:</span> {item.name}
           </span>
           <div>
-            {Users.map((item, index) => (
+            {Data.map((item, index) => (
               <div
                 className={index === current ? "slide active" : "slide"}
                 key={index}
@@ -78,8 +78,4 @@ export default function UsersData() {
       ))}
     </div>
   );
- 
-}
-{
- 
 }
